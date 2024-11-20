@@ -46,22 +46,22 @@ const AppLayout = () => {
               label: "Categories",
             },
             {
-              key: "3",
+              key: "/products",
               icon: <VideoCameraOutlined />,
               label: "Products",
             },
             {
-              key: "4",
+              key: "/orders",
               icon: <UploadOutlined />,
               label: "Orders",
             },
             {
-              key: "5",
+              key: "/users",
               icon: <UploadOutlined />,
               label: "Users",
             },
             {
-              key: "6",
+              key: "/settings",
               icon: <UploadOutlined />,
               label: "Settings",
             },

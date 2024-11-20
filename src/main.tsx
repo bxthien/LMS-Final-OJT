@@ -6,6 +6,10 @@ import AppLayout from "./components/layouts/page";
 import HomePage from "./pages/HomePage/home-page";
 import Categories from "./pages/Categories/categories";
 import NotFound from "./components/not-found";
+import Products from "./pages/Products/products";
+import Orders from "./pages/Orders/orders";
+import Users from "./pages/Users/users";
+import Settings from "./pages/Settings/settings";
 
 const router = createBrowserRouter([
   {
@@ -22,16 +26,20 @@ const router = createBrowserRouter([
         element: <Categories />,
       },
       {
-        path: "/",
-        element: <HomePage />,
+        path: "/products",
+        element: <Products />,
       },
       {
-        path: "/",
-        element: <HomePage />,
+        path: "/orders",
+        element: <Orders />,
       },
       {
-        path: "/",
-        element: <HomePage />,
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
       },
     ],
   },
