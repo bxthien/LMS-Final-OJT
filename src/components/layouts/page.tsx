@@ -6,7 +6,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
+import { Avatar, Button, Layout, Menu, theme } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
@@ -70,17 +70,25 @@ const AppLayout = () => {
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
-          <Button>Text</Button>
+          <div className="flex justify-between">
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+              }}
+            />
+            <div className="flex items-center justify-center mr-4 z-10 gap-2">
+              <Avatar size={`large`} icon={<UserOutlined />} />
+              <div className=" text-black gap-3 leading-4">
+                <div className="font-semibold">Bui Xuan Thien</div>
+                <div className="text-xs italic">Super Admin</div>
+              </div>
+            </div>
+          </div>
         </Header>
         <Content
           style={{
