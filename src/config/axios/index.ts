@@ -1,15 +1,54 @@
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
+import { getStorageData } from "../storage";
+import { API_URL } from "../../constants/url";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../constants/auth";
 
-const BASE_URL = "https://a161-113-160-225-96.ngrok-free.app";
+const BASE_URL = import.meta.env.VITE_BASE_URL_API;
 axios.defaults.baseURL = BASE_URL;
 
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-  timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "69420",
-  },
+const instanceAxios = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL_API,
+  timeout: 1000,
 });
 
-export default axiosInstance;
+axios.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    if (config.url === API_URL.LOGIN) {
+      return config;
+    }
+
+    if (config.url === API_URL.REFRESH_TOKEN) {
+      const refreshToken = getStorageData(REFRESH_TOKEN);
+      if (refreshToken) {
+        config.headers["Authorization"] = `Bearer ${refreshToken}`;
+      }
+
+      return config;
+    }
+
+    const accessToken = getStorageData(ACCESS_TOKEN);
+    if (accessToken) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const { response } = error;
+
+    if (response && response.status === 401) {
+      localStorage.removeItem(ACCESS_TOKEN);
+      console.log("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.");
+      window.location.href = `/login`;
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+export default instanceAxios;

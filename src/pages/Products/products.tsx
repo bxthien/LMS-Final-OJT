@@ -1,10 +1,10 @@
-import { Image, Space, Table } from "antd";
+import { Button, Image, Input, Space, Table } from "antd";
 import type { TableProps } from "antd";
 import { useEffect, useState } from "react";
 import { getProduct, getProductDetail } from "../../api/product";
 import EditIC from "../../assets/svgs/write.svg";
 import { ProductType } from "../../ interface/product";
-import ModalProductDetail from "../../components/Modal/ModalProductDetail";
+import DrawerProductDetail from "../../components/Modal/ModalProductDetail";
 
 const Products = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -29,25 +29,29 @@ const Products = () => {
       width: 200,
     },
     {
-      title: "name",
+      title: "Product Name",
       dataIndex: "name",
       key: "name",
+      width: 200,
     },
     {
-      title: "category",
-      dataIndex: "category",
+      title: "Category",
+      dataIndex: "Category",
       key: "category",
       render: (_: string, record: ProductType) => <>{record.category.name}</>,
+      width: 200,
     },
     {
-      title: "price",
+      title: "Price",
       dataIndex: "price",
       key: "price",
+      width: 200,
     },
     {
-      title: "quantity",
+      title: "Quantity",
       dataIndex: "quantity",
       key: "quantity",
+      width: 200,
     },
     {
       title: "Action",
@@ -93,17 +97,22 @@ const Products = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-3">
+        <Input className="max-w-[300px]" placeholder="Search by product name" />
+        <Input className="max-w-[300px]" placeholder="Search by product name" />
+        <Input className="max-w-[300px]" placeholder="Search by product name" />
+        <Button>Search</Button>
+      </div>
       <Table columns={columns} dataSource={products} />
-      <ModalProductDetail
+      <DrawerProductDetail
         product={productDetail}
-        isModalOpen={isModalOpen}
+        isDrawerOpen={isModalOpen}
         handleOk={handleOk}
         handleCancel={handleCancel}
       />
-    </>
+    </div>
   );
-  return "oke";
 };
 
 export default Products;

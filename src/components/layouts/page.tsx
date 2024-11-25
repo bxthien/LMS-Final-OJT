@@ -7,11 +7,11 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, theme } from "antd";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
-const AppLayout = () => {
+const AppLayout: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -99,7 +99,7 @@ const AppLayout = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          <Outlet />
+          {children}
         </Content>
       </Layout>
     </Layout>
