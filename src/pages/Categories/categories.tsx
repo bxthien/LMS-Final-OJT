@@ -37,7 +37,7 @@ const Categories = () => {
     const fetchCategories = async () => {
       try {
         const data = await getCategories();
-        setCategory(data);
+        // setCategory(data);
       } catch (err) {
         console.log("err", err);
       }

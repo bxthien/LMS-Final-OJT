@@ -9,9 +9,22 @@ export interface ProductType {
   info?: Info;
 }
 
-interface Info {
+export interface Info {
   description: string;
   color: string[];
   size: string[];
   policy: string;
+}
+
+export interface ProductInfo {
+  color: string[];
+  size: string;
+  description: string;
+}
+
+export interface ProductFormValues {
+  name: string;
+  price: number;
+  quantity: number;
+  info: ProductInfo;
 }
