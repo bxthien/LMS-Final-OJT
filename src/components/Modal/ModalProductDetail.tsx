@@ -1,5 +1,5 @@
 import { Button, Drawer, Form, Input, Select } from "antd";
-import { ProductType } from "../../ interface/product";
+import { ProductType } from "../../interface/product";
 import { useEffect } from "react";
 
 interface Prop {

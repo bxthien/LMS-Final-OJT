@@ -3,7 +3,7 @@ import type { TableProps } from "antd";
 import { useEffect, useState } from "react";
 import { getProduct, getProductDetail } from "../../api/product";
 import EditIC from "../../assets/svgs/write.svg";
-import { ProductType } from "../../ interface/product";
+import { ProductType } from "../../interface/product";
 import DrawerProductDetail from "../../components/Modal/ModalProductDetail";
 
 const Products = () => {
@@ -104,7 +104,7 @@ const Products = () => {
         <Input className="max-w-[300px]" placeholder="Search by product name" />
         <Button>Search</Button>
       </div>
-      <Table columns={columns} dataSource={products} />
+      <Table columns={columns} dataSource={products} scroll={{ y: 500 }} />
       <DrawerProductDetail
         product={productDetail}
         isDrawerOpen={isModalOpen}

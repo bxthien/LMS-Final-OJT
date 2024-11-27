@@ -8,10 +8,15 @@ axios.defaults.baseURL = BASE_URL;
 
 const instanceAxios = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL_API,
+  headers: {
+    "Content-Type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin": "*",
+    "ngrok-skip-browser-warning": "true",
+  },
   timeout: 1000,
 });
 
-axios.interceptors.request.use(
+instanceAxios.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (config.url === API_URL.LOGIN) {
       return config;
@@ -36,7 +41,7 @@ axios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-axios.interceptors.response.use(
+instanceAxios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const { response } = error;
