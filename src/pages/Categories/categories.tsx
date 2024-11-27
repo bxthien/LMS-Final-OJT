@@ -1,42 +1,42 @@
-import { Space, Table } from "antd";
-import type { TableProps } from "antd";
-import { getCategories } from "../../api/categories";
-import { useEffect, useState } from "react";
+// import { Space } from "antd";
+// import type { TableProps } from "antd";
+// import { getCategories } from "../../api/categories";
+import { useEffect } from "react";
 
 export interface CategoryType {
   id: string;
   name: string;
 }
 
-const columns: TableProps<CategoryType>["columns"] = [
-  {
-    title: "ID",
-    dataIndex: "id",
-    key: "id",
-  },
-  {
-    title: "name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: () => (
-      <Space size="middle">
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
+// const columns: TableProps<CategoryType>["columns"] = [
+//   {
+//     title: "ID",
+//     dataIndex: "id",
+//     key: "id",
+//   },
+//   {
+//     title: "name",
+//     dataIndex: "name",
+//     key: "name",
+//   },
+//   {
+//     title: "Action",
+//     key: "action",
+//     render: () => (
+//       <Space size="middle">
+//         <a>Delete</a>
+//       </Space>
+//     ),
+//   },
+// ];
 
 const Categories = () => {
-  const [category, setCategory] = useState<CategoryType[]>([]);
+  // const [category, setCategory] = useState<CategoryType[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await getCategories();
+        // const data = await getCategories();
         // setCategory(data);
       } catch (err) {
         console.log("err", err);
@@ -46,7 +46,8 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  return <Table columns={columns} dataSource={category} />;
+  // return <Table columns={columns} dataSource={category} />;
+  return <></>;
 };
 
 export default Categories;
