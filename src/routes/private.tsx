@@ -22,30 +22,30 @@ const routes = [
     element: <PrivateLayout />,
     errorElement: <NotFound />,
     children: [
-      // {
-      //   path: "/",
-      //   element: <HomePage />,
-      // },
-      // {
-      //   path: "/categories",
-      //   element: <Categories />,
-      // },
-      // {
-      //   path: "/products",
-      //   element: <Products />,
-      // },
-      // {
-      //   path: "/orders",
-      //   element: <Orders />,
-      // },
-      // {
-      //   path: "/users",
-      //   element: <Users />,
-      // },
-      // {
-      //   path: "/settings",
-      //   element: <Settings />,
-      // },
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
     ],
   } as Route,
 ];

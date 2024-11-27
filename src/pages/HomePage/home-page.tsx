@@ -11,8 +11,8 @@ const HomePage = () => {
             <Image src={ChartIc} />
           </div>
           <div>
-            <div>Active</div>
-            <div>2h 37m</div>
+            <div>Active User</div>
+            <div>120 users</div>
           </div>
         </Card>
         <Card>
@@ -20,8 +20,8 @@ const HomePage = () => {
             <Image src={ChartIc} />
           </div>
           <div>
-            <div>Active</div>
-            <div>2h 37m</div>
+            <div>Ordered</div>
+            <div>15 Order</div>
           </div>
         </Card>
         <Card>
